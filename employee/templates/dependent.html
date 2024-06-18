@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+    <main>
+        <div>
+            <style>
+                h5 {
+                    color: red;
+                }
+            </style>
+            {% for message in messages %}
+            <h5>{{ message }}</h5>
+            {% endfor %}
+        </div>
+        <form action=""  method="post"> {% csrf_token %}
+            <div class="form--section__container">
+                <div class="input--wrapper">
+                    <label for="Employee_id">Employee_id</label>
+                    <input type="text" name="Employee_id" id="value1">
+                </div>
+                <div class="input--wrapper">
+                    <label for=" Dependent_Name">Dependent_Name</label>
+                    <input type="text" name="Dependent_Name" id="value2">
+                </div>    
+                <div class="input--wrapper">
+                    <label for="Dependent_gender"><strong>GENDER*</strong></label><br>
+                    <select id="grade" name="Dependent_gender" required>
+                        <option value="M">Male</option>
+                        <option value="F">Female</option>
+                        <option value="blank" selected></option>
+                    </select>
+                </div>
+                <div class="input--wrapper">
+                    <label for="birthdate"><strong>Date of Birth*</strong></label><br>
+                    <input type="date" name="birthdate" id="birthdate" min="01-01-2001" max="01-01-2009 required ">
+                </div>
+                <div class="input--wrapper">
+                    <label for="Dependent_Relationship">Dependent Relationship</label>
+                    <input type="text" name="Dependent_Relationship" id="value2">
+                </div>
+            </div>
+            <Button type="submit" class="submit-btn">SUBMIT</Button>
+            <a href="{% url 'home' %}"><Button type="button" class="submit-btn">HOME</Button></a>
+        </form>
+    </main>
+</body>
+
+</html>

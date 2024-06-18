@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <main>
+
+        <form action="">
+            <div class="form--section__container">
+               
+            </div>
+            <a href="{% url 'employee' %}"><Button type="button" class="submit-btn">Want a job? Become an employee</Button></a>
+            <a href="{% url 'project' %}"><Button type="button" class="submit-btn">Create or join a project</Button></a>
+
+        </form>
+    </main>
+</body>
+</html>

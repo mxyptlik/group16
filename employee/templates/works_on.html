@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works On Form</title>
+
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        /* Additional Styles for New Form Fields */
+        .hidden {
+            display: none;
+        }
+
+        .input--wrapper input,
+        .input--wrapper select {
+            /* Apply styles for input and select elements */
+            padding: 12px;
+            font-size: 18px;
+            outline: none;
+            border-radius: 8px;
+            border: 1px solid #000;
+        }
+
+        .input--wrapper input:focus,
+        .input--wrapper select:focus {
+            border: 2px solid goldenrod;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div>
+            <style>
+                h5 {
+                    color: red;
+                }
+            </style>
+            {% for message in messages %}
+            <h5>{{ message }}</h5>
+            {% endfor %}
+        </div>
+        <form action="" id="worksOnForm" method="post">{% csrf_token %}
+            <div class="form--section__container">
+                <div class="input--wrapper">
+                    <label for="Employee_id">Employee ID*</label>
+                    <input type="text" name="Employee_id" id="Employee_id" required>
+                </div>
+                <div class="input--wrapper">
+                    <label for="project_id">Project ID*</label>
+                    <input type="text" name="project_id" id="project_id" required>
+                </div>
+                <div class="input--wrapper">
+                    <label for="department_id">Department ID*</label>
+                    <input type="text" name="department_id" id="department_id" required>
+                </div>
+            </div>
+            <Button type="submit" class="submit-btn">SUBMIT</Button>
+            <a href="{% url 'home' %}"><Button type="button" class="submit-btn">HOME</Button></a>
+        </form>
+    </main>
+</body>
+
+</html>

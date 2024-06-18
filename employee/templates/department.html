@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Form</title>
+
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <style>
+        /* Additional Styles for New Form Fields */
+        .hidden {
+            display: none;
+        }
+
+        .input--wrapper input,
+        .input--wrapper select {
+            /* Apply styles for input and select elements */
+            padding: 12px;
+            font-size: 18px;
+            outline: none;
+            border-radius: 8px;
+            border: 1px solid #000;
+        }
+
+        .input--wrapper input:focus,
+        .input--wrapper select:focus {
+            border: 2px solid goldenrod;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <form action="" id="departmentForm" method = 'POST'> {% csrf_token %}
+            <div class="form--section__container">
+                <div class="input--wrapper">
+                    <label for="department_id">Department ID*</label>
+                    <input type="text" name="department_id" id="department_id" required>
+                </div>
+                <div class="input--wrapper">
+                    <label for="department_name">Department Name*</label>
+                    <input type="text" name="department_name" id="department_name" required>
+                </div>
+                <div class="input--wrapper">
+                    <label for="department_location">Department Location*</label>
+                    <input type="text" name="department_location" id="department_location" required>
+                </div>
+            </div>
+            <Button type="submit" class="submit-btn">SUBMIT</Button>
+            <a href="{% url 'home' %}"><Button type="button" class="submit-btn">HOME</Button></a>
+        </form>
+    </main>
+</body>
+
+</html>

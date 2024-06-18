@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+    <main>
+        <div>
+            <style>
+                h5 {
+                    color: red;
+                }
+            </style>
+            {% for message in messages %}
+            <h5>{{ message }}</h5>
+            {% endfor %}
+        </div>
+        <h1> Your Employee id is {{employee.Employee_id}}</h1>
+        <!-- Employee Form -->
+        <form action="" method="POST"> {% csrf_token %}
+            <div class="form--section__container">
+                <!-- Include other fields for the Employee model -->
+
+                <!-- Additional fields for Salaried_Employee -->
+                {% if employee.Employee_type == 'Salaried' %}
+                <div class="input--wrapper">
+                    <label for="AnnualSalary">Annual Salary</label>
+                    <input type="number" name="AnnualSalary" step="any" required>
+                </div>
+
+                <div class="input--wrapper">
+                    <label for="StockOption">Stock Option</label>
+                    <input type="number" name="StockOption" step="any" required>
+                </div>
+                {% else %}
+                {% endif %}
+
+                <!-- Additional fields for HourlyEmployee -->
+                {% if employee.Employee_type == 'Hourly' %}
+                <div class="input--wrapper">
+                    <label for="HourlyRate">Hourly Rate</label>
+                    <input type="number" name="HourlyRate" step="any" required>
+                </div>
+                {% else %}
+                {% endif %}
+
+                {% if employee.Employee_type == 'Contract' %}
+                <!-- Additional fields for Contract_consultant -->
+                <div class="input--wrapper">
+                    <label for="BillingRate">Billing Rate</label>
+                    <input type="number" name="BillingRate" step="any" required>
+                </div>
+                <div class="input--wrapper">
+                    <label for="Contract_number">Contract Number</label>
+                    <input type="text" name="Contract_number" required>
+                </div>
+                {% endif %}
+            </div>
+
+            <Button type="submit" class="submit-btn">SUBMIT</Button>
+            <a href="{% url 'home' %}"><Button type="button" class="submit-btn">HOME</Button></a>
+        </form>
+    </main>
+</body>
+
+</html>
